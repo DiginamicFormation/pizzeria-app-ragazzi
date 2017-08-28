@@ -1,0 +1,70 @@
+{
+    "pizzas" : [
+        {
+            "name":"4 fromages",
+            "price":"10.5",
+            "imageUrl":"img/Pizza_4froamges.jpg",
+            "categorie":"sans_viande"
+
+        },
+        {
+            "name":"4 saisons",
+            "price":"12",
+            "imageUrl":"img/Pizza_4saisons.jpg",
+            "categorie":"viande"
+
+        },
+        {
+            "name":"Bolognese",
+            "price":"11",
+            "imageUrl":"img/Pizza_Bolognese.jpg",
+            "categorie":"viande"
+
+        },
+        {
+            "name":"Calzone",
+            "price":"9",
+            "imageUrl":"img/Pizza_Calzone.jpg",
+            "categorie":"viande"
+
+        },
+        {
+            "name":"Chorizo",
+            "price":"10",
+            "imageUrl":"img/Pizza_Chorizo.jpg",
+            "categorie":"viande"
+
+        },
+        {
+            "name":"La mer",
+            "price":"13",
+            "imageUrl":"img/Pizza_laMer.jpg",
+            "categorie":"poisson"
+
+        },
+        {
+            "name":"Napolitaine",
+            "price":"10",
+            "imageUrl":"img/Pizza_Napolitaine.jpg",
+            "categorie":"viande"
+
+        },
+        {
+            "name":"Regina",
+            "price":"8",
+            "imageUrl":"img/Pizza_Regina.jpg",
+            "categorie":"viande"
+
+        },
+        {
+            "name":"Reine",
+            "price":"10",
+            "imageUrl":"img/Pizza_Reine.jpg",
+            "categorie":"viande"
+
+        }
+    ],
+    "users":[
+
+    ]
+}
