@@ -1,12 +1,14 @@
 import angular from "angular"
 import ngRoute from 'angular-route'
 
-import home from './home/home.html'
-
-import HomeController from "./home/home.controller"
+import headerComponent from './components/header/header.component'
+import footerComponent from './components/footer/footer.component'
+import homeComponent from './components/home/home.component'
 
 angular.module('pizzeriaApp', ['ngRoute'])
-	.controller(HomeController.name, HomeController)
+	.component('header', headerComponent)
+	.component('footer', footerComponent)
+	.component('home', homeComponent)
 	.config(($routeProvider, $locationProvider) => {
 
 		$locationProvider.html5Mode(true)
