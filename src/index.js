@@ -4,7 +4,7 @@ import ngRoute from 'angular-route'
 import home from './home/home.html'
 import 'bootstrap/dist/css/bootstrap.css'
 import HomeController from "./home/home.controller"
-import order from './order/order.html'
+import order from './order/component/order.html'
 
 angular.module('pizzeriaApp', ['ngRoute'])
 	.controller(HomeController.name, HomeController)
