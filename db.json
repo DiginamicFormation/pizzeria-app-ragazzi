@@ -65,6 +65,13 @@
         }
     ],
     "users":[
+        {
+        "email": "lamtan93@gmail.com",
+        "passwords" : "admin",
+        "firstname" : "LAM",
+        "lastname": "Tan",
+        "adress": "Paris"
+        }
 
     ],
     "orders":[
