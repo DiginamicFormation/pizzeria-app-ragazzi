@@ -24,9 +24,14 @@ angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name])
 		.when('/home',{
 			template:'<rag-home></rag-home>'
 		})
-		
+
+
+		.when('/createAccount',{
+			template:'<rag-user-create></rag-user-create>'
+		})
+
 		.otherwise({
 			redirectTo: '/order'
 		})
-		
+
 	})

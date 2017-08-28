@@ -5,7 +5,4 @@ const userComponent = {
 	template : createAccountTemplate,
 	controller : userController
 }
-
-
-
 export default userComponent;
