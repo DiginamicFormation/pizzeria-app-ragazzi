@@ -5,3 +5,4 @@ const footerComponent = {
 	template: footerTpl,
 	controller: FooterCtrl
 }
+export default footerComponent

@@ -5,3 +5,4 @@ const headerComponent = {
 	template: headerTpl,
 	controller: HeaderCtrl
 }
+export default headerComponent
