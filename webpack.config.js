@@ -1,8 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 const output = 'public';
-let HtmlWebpackPlugin = require("html-webpack-plugin")
-
 
 module.exports = {
     entry: {
@@ -47,9 +45,5 @@ module.exports = {
             { test: /\.html$/, exclude: [/node_modules/], use: 'raw-loader'},
 
         ]
-    },
-
-     plugins: [
-        new HtmlWebpackPlugin()
-    ]
+    }
 };
