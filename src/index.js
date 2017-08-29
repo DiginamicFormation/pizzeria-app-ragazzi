@@ -10,8 +10,9 @@ import homeComponent from './components/home/home.component'
 import 'bootstrap/dist/css/bootstrap.css'
 import userModule from './user/user.module'
 import orderModule from './order/order.module'
+import shoppingCartModule from './shoppingCart/shoppingCart.module'
 
-angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name])
+angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name,shoppingCartModule.name])
 	.component('ragHeader', headerComponent)
 	.component('ragFooter', footerComponent)
 	.component('ragHome', homeComponent)
@@ -31,7 +32,7 @@ angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name])
 		})
 
 		.otherwise({
-			redirectTo: '/order'
+			redirectTo: '/shoppingCart'
 		})
 
 	})

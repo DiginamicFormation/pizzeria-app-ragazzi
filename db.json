@@ -1,54 +1,63 @@
 {
   "pizzas": [
     {
+      "id":1,
       "name": "4 fromages",
       "price": "10.5",
-      "imageUrl": "img/Pizza_4froamges.jpg",
+      "imageUrl": "img/Pizza_4fromages.jpg",
       "categorie": "sans_viande"
     },
     {
+      "id":2,
       "name": "4 saisons",
       "price": "12",
       "imageUrl": "img/Pizza_4saisons.jpg",
       "categorie": "viande"
     },
     {
+      "id":3,
       "name": "Bolognese",
       "price": "11",
       "imageUrl": "img/Pizza_Bolognese.jpg",
       "categorie": "viande"
     },
     {
+      "id":4,
       "name": "Calzone",
       "price": "9",
       "imageUrl": "img/Pizza_Calzone.jpg",
       "categorie": "viande"
     },
     {
+      "id":5,
       "name": "Chorizo",
       "price": "10",
       "imageUrl": "img/Pizza_Chorizo.jpg",
       "categorie": "viande"
     },
     {
+      "id":6,
       "name": "La mer",
       "price": "13",
       "imageUrl": "img/Pizza_laMer.jpg",
       "categorie": "poisson"
     },
     {
+      "id":7,
       "name": "Napolitaine",
       "price": "10",
       "imageUrl": "img/Pizza_Napolitaine.jpg",
       "categorie": "viande"
     },
     {
+      "id":8,
       "name": "Regina",
       "price": "8",
       "imageUrl": "img/Pizza_Regina.jpg",
       "categorie": "viande"
     },
     {
+      "id":9,
       "name": "Reine",
       "price": "10",
       "imageUrl": "img/Pizza_Reine.jpg",
@@ -78,5 +87,33 @@
       "id": 3
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id":1,
+      "idUser":3,
+      "pizzas":[
+        {
+          "id":1,
+          "quantity":1
+        },
+        {
+          "id":2,
+          "quantity":2
+        }
+      ],
+      "total" : 34.5
+      
+    },
+    {
+      "id":2,
+      "idUser":2,
+      "pizzas":[
+        {
+          "id":1,
+          "quantity":1
+        }
+      ],
+      "total" : 10.5
+    }
+  ]
 }

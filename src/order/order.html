@@ -1,6 +1,6 @@
 <div class="container" ng-controller="OrderController as Ctrl">
-    <h2>Votre panier</h2>
-    <div class="row">
+    <h2>Votre commande</h2>
+    <div class="row" style="border:1px solid black">
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -14,14 +14,35 @@
                     </div>
                 </tr>
             </thead>
-            <tbody>
+            <tbody ng-repeat="pizza in Ctrl.result">
+                    <td><img ng-src="{{pizza.imageUrl}}" class="img-responsive" width="20%"></td>
+                    <td ng-model="name">{{pizza.name}}</td>
+                    <td>{{pizza.price}} €</td>
                     <td>
-                        <img class='img-responsive' src='../../img/Pizza_4fromages.jpg' width="20%">
+                        {{pizza.quantity}}
                     </td>
-                    <td>4 Fromages</td>
-                    <td>11€</td>
-                    <td>Quantité</td>
             </tbody>
         </table>
+        <div class="row">
+            <div class="col-xs-offset-10">
+                <h3>Total : {{Ctrl.total}} € </h3> 
+                <input type="button" value="Modifier" href="#"> 
+            </div>
+        </div>
+        <br>
     </div>
+
+    <div class="row" style="border:1px solid black">
+            <br>
+            <img ng-style="Ctrl.myStyleEmporter" ng-model="emporter" src='../../img/aEmporter.jpg' ng-click="Ctrl.aEmporter() ">
+            <img ng-style="Ctrl.myStyleLivraison"  class="col-xs-offset-3" src='../../img/aLivrer.jpg' ng-click="Ctrl.aLivrer()">
+            <br>
+            <br>
+            <div class="col-xs-offset-9">
+                <input type="button" ng-click="Ctrl.valider()" class="btn btn-success" value="Confirmer la commande">
+            </div>
+            <br>
+    </div>
+
+
 </div>
