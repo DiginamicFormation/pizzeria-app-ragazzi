@@ -81,14 +81,20 @@ export default class UserService{
 
 //-------------------Get userConnected-----------------------------
   getUserConnected(){
-    try {
-      this.userConnected = JSON.parse(this.$sessionStorage.get('userConnected'));
-      this.$log.log ('userConnected => '+this.userConnected.email + ' -- ' + this.userConnected.password);
 
-      return this.userConnected;
-    } catch (e) {
-      this.$log.log ('error: '+ e.message);
+    if(JSON.parse(this.$sessionStorage.get('userConnected')) != undefined){
+      try {
+        this.userConnected = JSON.parse(this.$sessionStorage.get('userConnected'));
+        this.$log.log ('Hi user :) '+this.userConnected.email + ' -- ' + this.userConnected.password);
+        return this.userConnected;
+      } catch (e) {
+        this.$log.log ('error: '+ e.message);
+      }
+    }else{
+      this.$log.log ('No user connected ! :(');
     }
+
+
   }
 
 
@@ -96,19 +102,18 @@ export default class UserService{
 //-------------------change the page--------------------------------
 
 changePage(link){
+
   if(link === 'newAccount'){
     this.$location.path('/createAccount');
   }else if(link === 'forgottenPasswords'){
     this.$location.path('/forgotPassword');
   }else if(link === 'login'){
     this.$location.path('/connectAccount');
+  }else if(link === 'edit'){
+    this.$location.path('/modifyAccount');
   }
 
 
 }
-
-
-
-
 
 }
