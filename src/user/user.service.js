@@ -1,30 +1,43 @@
 export default class UserService{
 
-	constructor($http, $log){
-		this.$http = $http;
-		this.$log = $log;
-	}
+  constructor($http, $log, UrlService){
+    this.$http = $http;
+    this.$log = $log;
+    this.UrlService = UrlService;
+    this.tabUsers = [];
+  }
 
-	createAccount(user){
-		this.user{
-			'email': user.email,
-			'password': user.password,
-			'firstname': user.firstname,
-			'lastname': user.lastname,
-			'adress': user.adress
-		}
+//---------------------get All users--------------------
+  getAllUsers(){
+   return this.$http.get(this.UrlService.users)
+   .then((res)=>{
+     return res.data;
+     this.$log.log("==>getAllUsers() OK !");
+   },(err)=>{
+     this.$log.log("==>ERR(getAllUsers): "+ err.status+'---' + err.statusText);
+   })
 
-		$http({
-			url : 'http://http://localhost:3000/users',
-			method : 'POST'
-			data : user;
-		})
-		.then((res)=>{
-			$log.log("Created OK ! (y)")
-		},(err)=>{
-			$log.log("Created faile ! :(")
-		})
-	}
+  }
+//-----------------Create Account-----------------------
+  createAccount(account){
+    this.account = {'email':account.email,
+                    'password': account.password,'firstname': account.firstname,
+                    'lastname': account.lastname,'adress': account.adress};
+    this.$http({
+      url: this.UrlService.users,
+      method: 'POST',
+      data: this.account
+    }).then((res)=>{
+      this.$log.log("==>created account OK ! :) "+ res.statusText);
+       return res;
+    },(err)=>{
 
+      this.$log.log("==>ERR(createAccount): "+ err.status+'---' + err.statusText);
+      return res;
+    })
+
+
+  }
 
 }
+

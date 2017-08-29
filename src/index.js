@@ -9,9 +9,9 @@ import homeComponent from './components/home/home.component'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import userModule from './user/user.module'
+import orderModule from './order/order.module'
 
-
-angular.module('pizzeriaApp', ['ngRoute', userModule.name])
+angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name])
 	.component('ragHeader', headerComponent)
 	.component('ragFooter', footerComponent)
 	.component('ragHome', homeComponent)
@@ -24,9 +24,14 @@ angular.module('pizzeriaApp', ['ngRoute', userModule.name])
 		.when('/home',{
 			template:'<rag-home></rag-home>'
 		})
-		
-		.otherwise({
-			redirectTo: '/home'
+
+
+		.when('/createAccount',{
+			template:'<rag-user-create></rag-user-create>'
 		})
-		
+
+		.otherwise({
+			redirectTo: '/order'
+		})
+
 	})
