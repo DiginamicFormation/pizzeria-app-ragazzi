@@ -7,7 +7,6 @@ export default class UserService{
     this.UrlService = UrlService;
     this.$location = $location;
     this.tabUsers = [];
-    //this.userConnected = undefined;
     this.result = 'unknown';
     this.foundUser = false;
   }
@@ -97,7 +96,40 @@ export default class UserService{
 
   }
 
+  modifyAccount(account){
+    this.userToModify = undefined;
+    this.getAllUsers();
+    this.tabUsers.forEach((e)=>{
+      if(account.email === e.email){
 
+        this.userToModify = {
+          "email": newAccount.email,
+          "password": newAccount.password,
+          "firstname": newAccount.firstname,
+          "lastname": newAccount.lastname,
+          "adress": newAccount.adress
+        }
+
+      }
+    })
+
+    console.log(this.userToModify);
+
+    this.tabUsers.push(this.userToModify);
+
+    this.$http({
+        url: this.UrlService.users,
+        method: 'PUT',
+        data: this.tabUsers
+      }).then((res)=>{
+        return res.status + ' -- ' + res.statusText
+        this.$log.log("Update OK !")
+      },(err)=>{
+        return err.status + ' -- ' + err.statusText
+        this.$log.log("Update failed !")
+      })
+
+  }
 
 //-------------------change the page--------------------------------
 

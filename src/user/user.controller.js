@@ -54,6 +54,9 @@ getForgottenPassword(account){
 
 }
 
+modifyAccount(newAccount){
+	this.UserService.modifyAccount(newAccount);
+}
 
 getUserConnected(){
 	this.userConnected = this.UserService.getUserConnected();
