@@ -9,9 +9,10 @@ import homeComponent from './components/home/home.component'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import userModule from './user/user.module'
+import pizzaModule from './pizza/pizza.module'
 import orderModule from './order/order.module'
 
-angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name])
+angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name,pizzaModule.name])
 	.component('ragHeader', headerComponent)
 	.component('ragFooter', footerComponent)
 	.component('ragHome', homeComponent)

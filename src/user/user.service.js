@@ -86,10 +86,6 @@ export default class UserService{
     })
 
   }
-
-
-
-
 //-------------------change the page--------------------------------
 
 changePage(link){
