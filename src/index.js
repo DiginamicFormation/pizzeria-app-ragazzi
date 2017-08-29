@@ -30,6 +30,10 @@ angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name])
 			template:'<rag-user-create></rag-user-create>'
 		})
 
+		.when('/connectAccount',{
+			template:'<user-connexion-component></user-connexion-component>'
+		})
+
 		.otherwise({
 			redirectTo: '/order'
 		})
