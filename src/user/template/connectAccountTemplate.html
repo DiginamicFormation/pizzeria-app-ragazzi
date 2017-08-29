@@ -44,6 +44,18 @@ height: 40px;
 float: right;
 
 }
+
+.link{
+  font-family: 'open sans',sans-serif;
+  font-size: 12px;
+  text-decoration: none;
+  float: right;
+  margin-bottom: 15px;
+}
+
+.link div button a{
+  color: black;
+}
 </style>
 
 <div ng-controller = 'UserController as userCtl'>
@@ -52,19 +64,20 @@ float: right;
 <div class="well">
 			<div id="myBorder"  class="col-lg-offset-4" >
 				<span id="labelNewCollab" class="label label-default ">Connexion</span>
-        <div class="row">
-          <div class="col-lg-offset-3 " >
-            <span><a href="#">Mot de passe oublié :(</a></span>
-          </div>
 
+        <div class="link" class="row">
+         <div class="col-lg-offset-9 " >
+          <button  ng-click='userCtl.changePage("newAccount")' class="btn btn-sm btn-info btn-outline-info">Nouveau compte</button>
+         </div>
+
+       </div>
+
+       <div class="link" class="row">
+        <div class="col-lg-offset-9 " >
+         <button ng-click='userCtl.changePage("forgottenPasswords")' class="btn btn-sm btn-danger btn-outline-danger">Passwords oublié</button>
         </div>
 
-        <!-- <div class="row">
-          <div class="col-lg-offset-3 " >
-            <span><a>Log out</</a></span>
-          </div>
-
-        </div> -->
+      </div>
 
 				<div id="myForm">
 
@@ -87,6 +100,7 @@ float: right;
 
 								</div>
               </div>
+
 
 					</form>
 				</div>
