@@ -9,6 +9,11 @@ export default class UserController {
 		this.tabUsers = [];
 	}
 
+
+	$onInit(){
+		this.verifyIfUserLogged();
+	}
+
 	getAllUsers(){
 		this.tabUsers = this.UserService.getAllUsers();
 	}
@@ -20,6 +25,16 @@ export default class UserController {
 
 	resetForm(){
 	this.$scope.account = {};
+}
+
+
+verifyIfUserLogged(){
+	this.UserService.verifyIfUserLogged();
+}
+
+connectAccount(account){
+	this.UserService.connectAccount(account);
+
 }
 
 

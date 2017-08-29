@@ -7,7 +7,13 @@
   </head>
   <body ng-app="pizzeriaApp">
 
-	<ng-view></ng-view>
+  	<div class="container">
+      <rag-header></rag-header>
+    	
+    	<ng-view></ng-view>
+    	
+    	<rag-footer></rag-footer>
+    </div>
 
   <script type="text/javascript" src="bundle.js"></script>
   </body>

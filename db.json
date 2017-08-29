@@ -68,7 +68,7 @@
     {
       "id": 1,
       "email": "lamtan93@gmail.com",
-      "passwords": "admin",
+      "password": "admin",
       "firstname": "LAM",
       "lastname": "Tan",
       "adress": "Paris"
@@ -85,6 +85,30 @@
       "lastname": "LAM",
       "adress": "6 av Champs Elysee Paris",
       "id": 3
+    },
+    {
+      "email": "admin@capgemini.fr",
+      "password": "123456",
+      "firstname": "admin",
+      "lastname": "admin",
+      "adress": "12 avenue Champs Elysees Paris",
+      "id": 4
+    },
+    {
+      "email": "email@email.com",
+      "password": "456789",
+      "firstname": "Paris",
+      "lastname": "Paris",
+      "adress": "06 av CHamps Elysees Paris",
+      "id": 5
+    },
+    {
+      "email": "haha",
+      "password": "hoho",
+      "firstname": "hihi",
+      "lastname": "hehe",
+      "adress": "haha",
+      "id": 6
     }
   ],
   "orders": [

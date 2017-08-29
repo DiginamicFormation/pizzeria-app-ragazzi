@@ -1,0 +1,38 @@
+<section>
+
+	<div>
+	
+		<ul class="list-inline">
+			<li><a href="#" ng-click='cat=""' >Tous ({{$ctrl.pizzas.length}})</a></li>
+
+			<li><a href="#" ng-click='cat="viande"'>Viande ({{$ctrl.pizzasViande.length}})</a></li>
+
+			<li><a href="#" ng-click='cat="poisson"'>Poisson ({{$ctrl.pizzasSansViande.length}})</a></li>
+
+			<li><a href="#" ng-click='cat="sans_viande"'>Sans viande ({{$ctrl.pizzasPoisson.length}})</a></li>
+		</ul>
+		
+		<br>
+
+		<div class="row" >
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+				<div ng-repeat="pizza in $ctrl.pizzas | categories:cat" class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="border: solid grey 0.5px; margin: 10px 10px; box-shadow: 5px 5px 2px grey">
+	
+					<h3>{{pizza.name}}</h3>
+					<hr>
+					<img ng-src="{{pizza.imageUrl}}" alt="img-{{pizza.name}}" class="img-responsive center-block" style="height: 200px; max-width: 100%;">
+					<hr>
+					<button class="btn">Ajouter au panier</button>
+					
+					<button class="btn">Retirer</button>
+					<br><br>
+
+				</div>
+			
+			</div>
+		</div>
+	
+	</div>
+
+</section>
