@@ -7,7 +7,7 @@ export default class UserService{
     this.UrlService = UrlService;
     this.$location = $location;
     this.tabUsers = [];
-    this.userConnected = undefined;
+    //this.userConnected = undefined;
     this.result = 'unknown';
     this.foundUser = false;
   }
@@ -55,15 +55,13 @@ export default class UserService{
             this.getAllUsers();
             this.tabUsers.forEach((user)=>{
               if( (user.email === acc.email) && (user.password === acc.password) ){
-                  this.userConnected = user;
-                  this.$log.log("==> Infos loggin OK :D!");
-                  this.foundUser = true;
 
-                  this.$sessionStorage.put('userConnected', this.userConnected);
+                  this.foundUser = true;
+                  this.$sessionStorage.put('userConnected',JSON.stringify(user))
+
+                    this.$log.log("==> Infos loggin OK :D!");
                     this.$log.log("You are connected !");
-                    this.result = 'Connected ! :)';
                     this.$location.path('/home');
-                    console.log(this.$sessionStorage.get('userConnected'))
               }
             })
 
@@ -78,8 +76,23 @@ export default class UserService{
 
   getForgottenPassword(account){
     return this.$http.get(this.UrlService.users+'/?email='+ account.email)
-
   }
+
+
+//-------------------Get userConnected-----------------------------
+  getUserConnected(){
+    try {
+      this.userConnected = JSON.parse(this.$sessionStorage.get('userConnected'));
+      this.$log.log ('userConnected => '+this.userConnected.email + ' -- ' + this.userConnected.password);
+
+      return this.userConnected;
+    } catch (e) {
+      this.$log.log ('error: '+ e.message);
+    }
+  }
+
+
+
 //-------------------change the page--------------------------------
 
 changePage(link){
