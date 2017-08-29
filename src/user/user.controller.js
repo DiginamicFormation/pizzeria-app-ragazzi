@@ -37,6 +37,14 @@ connectAccount(account){
 
 }
 
+getForgottenPassword(account){
+	this.forgottenPassword = this.UserService.getForgottenPassword(account);
+}
+
+
+changePage(link){
+	this.UserService.changePage(link);
+}
 
 }
 

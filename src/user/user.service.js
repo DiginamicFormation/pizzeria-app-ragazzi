@@ -74,7 +74,36 @@ export default class UserService{
   }
 }
 
+//--------------------getForgottentPassword-----------------------
+  getForgottenPassword(account){
+    this.$http.get(this.UrlService.users+'/?email='+ account.email)
+    .then((res)=>{
+      return res.data.password;
+      this.$log.log('password oublié est : '+res.data.password)
+      this.$log.log("Got forgotten password OK :D !" + err.status + ' ' + err.statusText)
+    },(err)=>{
+      this.$log.log("Problem technique ! "+ err.status + ' ' + err.statusText)
+    })
 
+  }
+
+
+
+
+//-------------------change the page--------------------------------
+
+changePage(link){
+  if(link === 'newAccount'){
+    this.$location.path('/createAccount');
+
+  }else if(link === 'forgottenPasswords'){
+    this.$location.path('/forgotPassword');
+  }else if(link === 'login'){
+    this.$location.path('/connectAccount');
+  }
+
+
+}
 
 
 
