@@ -1,0 +1,8 @@
+import connectAccountTemplate from '../template/connectAccountTemplate.html';
+import userController from '../user.controller.js';
+
+const userConnexionComponent = {
+	template : connectAccountTemplate,
+	controller : userController
+}
+export default userConnexionComponent;

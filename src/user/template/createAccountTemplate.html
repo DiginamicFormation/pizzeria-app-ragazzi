@@ -1,0 +1,104 @@
+
+
+<style>
+
+#myBorder{
+background: #33304e;
+width: 510px;
+height: auto;
+
+}
+#myForm{
+padding-top: 33px;
+}
+#labelNewCollab{
+
+padding: 5px 9px;
+display: inline-block;
+color: #111;
+font-family: 'Helvetica Neue', sans-serif;
+font-size: 20px;
+font-weight: bold;
+letter-spacing: -1px;
+line-height: 1;
+text-align: center;
+background: #e6c304;
+}
+
+#buttonCreate{
+padding: 8px 95px;
+margin-top: 20px;
+text-transform: uppercase;
+font-weight: bold;
+font-family: 'open sans',sans-serif;
+background: white;
+margin-bottom: 11px;
+}
+
+#labelMessage{
+
+margin-bottom: 63px;
+margin-top: -30px;
+
+}
+
+#iconCheckOk img{
+height: 40px;
+float: right;
+
+}
+
+</style>
+
+<div ng-controller='UserController as userCtl'>
+<div class="well">
+			<div id="myBorder"  class="col-lg-offset-4" >
+				<span id="labelNewCollab" class="label label-default ">New Account</span>
+
+				<div id="myForm">
+
+					<form  accept-charset="UTF-8"   >
+
+						<div class="row" >
+							<div class="col-lg-5 col-lg-offset-1 " >
+								<input ng-model='account.email' type="text" name="email" placeholder="Votre email" class="form-control" required="required">
+							</div>
+							<div class="col-lg-5  " >
+								<input ng-model='account.password' type="text" name="password" placeholder="Votre passwords" class="form-control" required="required">
+							</div>
+						</div>
+						<br>
+
+						<div class="row">
+								<div class="col-lg-10 col-lg-offset-1"><br>
+									<input ng-model='account.firstname' type="text" name="nom" placeholder="Votre nom" class="form-control" required="required"><br />
+								</div>
+						</div>
+
+							<div class="row">
+								<div class="col-lg-10 col-lg-offset-1">
+									<input ng-model='account.lastname' type="text" name="prenom" placeholder="Votre prenom" class="form-control" required="required">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-10 col-lg-offset-1"><br>
+									<input ng-model='account.adress' type="text" name="adress" placeholder="Votre adresse" class="form-control" required="required">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-offset-3 " >
+
+									<input ng-click = 'userCtl.createAccount(account)' id="buttonCreate" class="btn btn-default  " type="submit" name="" value="Créer">
+
+								</div>
+
+
+							</div>
+
+					</form>
+				</div>
+		</div>
+	</div>
+</div>
