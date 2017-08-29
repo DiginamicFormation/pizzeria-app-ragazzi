@@ -38,9 +38,20 @@ connectAccount(account){
 }
 
 getForgottenPassword(account){
-	this.forgottenPassword = this.UserService.getForgottenPassword(account);
+
+	if(account != null ){
+		this.UserService.getForgottenPassword(account)
+	.then((res)=>{
+			this.forgottenPassword = res.data[0].password;
+			this.$log.log('get password OK! '+res.data[0].password)
+	},(err)=>{
+		this.$log.log('erreur'+ err.statusText)
+	})
+}else if(account == null ) {
+	this.forgottenPassword = 'sorry but email incorrect ! '
 }
 
+}
 
 changePage(link){
 	this.UserService.changePage(link);
