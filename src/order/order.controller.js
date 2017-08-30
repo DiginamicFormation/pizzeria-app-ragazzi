@@ -4,12 +4,12 @@ export default class OrderController{
         this.$location = $location
         this.$sessionStorage = $sessionStorage
     }
-    $onInit(){       
+    $onInit(){
         this.pizzasList = JSON.parse(localStorage['shoppingCart'])
-        this.total = JSON.parse(localStorage['shoppingCartTotal'])    
-        
+        this.total = JSON.parse(localStorage['shoppingCartTotal'])
+
     }
-    aEmporter(){ 
+    aEmporter(){
         if(this.myStyleEmporter == undefined){
             this.myStyleEmporter={border: 'solid 2px blue'}
             this.selection = "emporter"
@@ -18,7 +18,7 @@ export default class OrderController{
             this.myStyleEmporter=undefined
             this.selection = undefined
         }
-        
+
     }
     aLivrer(){
         if(this.myStyleLivraison == undefined){
@@ -57,10 +57,10 @@ export default class OrderController{
               localStorage.removeItem('shoppingCart')
               localStorage.removeItem('shoppingCartTotal')
               this.$location.path('/home')
-          
+
         }
     }
-    
+
     changePage(adress){
         if(adress == 'modifier'){
             this.$location.path('/shoppingCart')
@@ -71,12 +71,12 @@ export default class OrderController{
     stringGen()
     {
         var text = " ";
-        
+
         var charset = "abcdefghijklmnopqrstuvwxyz0123456789";
-        
+
         for( var i=0; i < 10; i++ )
             text += charset.charAt(Math.floor(Math.random() * charset.length));
-        
+
         return text;
     }
 }
