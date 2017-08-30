@@ -6,21 +6,15 @@ export default class ShoppingCartController{
         this.shoppingCart = []
     }
 
-    $onInit() {       
+    $onInit() {
         if (localStorage.getItem('shoppingCart') == null) {
-            this.ShoppingCartService.pizzasList.forEach(idPizza => {
-                this.ShoppingCartService.findPizzaByPizzaId(idPizza)
-                    .then(pizza => {
-                        pizza.quantity = 1
-                        this.shoppingCart.push(pizza)
-                        this.save()
-                    })
-            })
+            this.$location.path('home')
         } else {
             this.shoppingCart = JSON.parse(localStorage['shoppingCart'])
             this.total()
         }
     }
+
     delete(pizza){
       let newTab = this.shoppingCart.filter(item=>{
             return item.id != pizza.id
@@ -56,7 +50,7 @@ export default class ShoppingCartController{
         }else{
             this.$location.path('/home')
         }
-        
+
     }
 }
 
