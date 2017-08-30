@@ -67,11 +67,11 @@
   "users": [
     {
       "id": 1,
-      "email": "lamtan94@gmail.com",
+      "email": "lamtan93@gmail.com",
       "password": "admin",
       "firstname": "LAM",
       "lastname": "Tan",
-      "adress": "Paris"
+      "adress": "12 avenue Champs Elysee Paris"
     },
     {
       "id": 2,
@@ -231,6 +231,5 @@
       "id": 21
     }
   ],
-  "orders": [
-     ]
+  "orders": []
 }

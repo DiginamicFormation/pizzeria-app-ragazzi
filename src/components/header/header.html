@@ -1,4 +1,11 @@
+
 <header>
+<style>
+.zoneUser{
+	margin-top:20px;
+}
+
+</style>
 	<div class="row" style="margin: 25px 0px; height: auto;">
 
 			<div class="col-xs-5 col-sm-4 col-md-3 col-lg-3">
@@ -12,13 +19,19 @@
 					<li class="col-xs-6 col-sm-6"><a href="/shoppingCart">Panier ()</a></li>
 					<div ng-controller='UserController as userCtl'>
 
-						<div ng-show='{{userCtl.userConnected.firstname != undefined}}' >
-							<div class="col-xs-6 col-sm-6"><a href="/displayInfos">Bonjour {{userCtl.userConnected.firstname}}</a></div>
-							<div class="col-xs-6 col-sm-6 col-xs-offset-6"><a ng-click='userCtl.removeUser()' href="/displayInfos">Logout :(</a></div>
+
+						<div class="zoneUser">
+
+
+						<div ng-show='{{userCtl.userConnected.firstname != undefined}}' class="espaceCompte" >
+							<button class=" btn btn-primary btn-infos col-xs-6 col-sm-6"><a style="color:white; text-decoration:none" href="/displayInfos">Bonjour {{userCtl.userConnected.firstname}}</a></button>
+							<button class="btn btn-primary btn-danger col-xs-6 col-sm-6 col-xs-offset-6 "><a style="color:white; text-decoration:none"" ng-click='userCtl.removeUser()' href="/displayInfos">Logout :(</a></button>
 						</div>
 
-						<div ng-show='{{userCtl.userConnected.firstname == undefined }} '>
-							<li class="col-xs-6 col-sm-6"><a href="/connectAccount">Login here</a></li>
+						<div ng-show='{{userCtl.userConnected.firstname == undefined }} ' class="espaceCompte">
+							<button class="btn btn-primary btn-infos col-xs-6 col-sm-6"><a style="color:white; text-decoration:none" href="/connectAccount">Login here</a></button>
+						</div>
+
 						</div>
 
 					</div>

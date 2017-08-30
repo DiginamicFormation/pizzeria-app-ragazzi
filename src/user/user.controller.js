@@ -63,6 +63,7 @@ getForgottenPassword(account){
 
 modifyAccount(newAccount){
 	this.UserService.modifyAccount(newAccount);
+	this.result = 'Updated OK !'
 }
 
 getUserConnected(){
