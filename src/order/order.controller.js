@@ -44,8 +44,7 @@ export default class OrderController{
             this.order = {
                 'idOrder': this.stringGen(),
                 'pizzas': this.pizzasList,
-                'idUser':1,
-                // this.userConnected.id,
+                'idUser': this.userConnected.email,
                 'date': date.getDay() +'/'+ date.getMonth() +'/'+date.getFullYear() ,
                 'total':this.total,
                 'statut':this.selection
