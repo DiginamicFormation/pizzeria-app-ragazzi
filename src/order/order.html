@@ -1,4 +1,4 @@
-<div class="container" ng-controller="OrderController as Ctrl">
+<div class="container"  >
     <h2>Votre commande</h2>
     <div class="row" style="border:1px solid black">
         <table class="table table-striped table-bordered">
@@ -14,7 +14,7 @@
                     </div>
                 </tr>
             </thead>
-            <tbody ng-repeat="pizza in Ctrl.result">
+            <tbody ng-repeat="pizza in $ctrl.pizzasList track by pizza.id">
                     <td><img ng-src="{{pizza.imageUrl}}" class="img-responsive" width="20%"></td>
                     <td ng-model="name">{{pizza.name}}</td>
                     <td>{{pizza.price}} €</td>
@@ -24,9 +24,9 @@
             </tbody>
         </table>
         <div class="row">
-            <div class="col-xs-offset-10">
-                <h3>Total : {{Ctrl.total}} € </h3> 
-                <input type="button" value="Modifier" href="#"> 
+            <div class="col-xs-offset-9">
+                <h3>Total : {{$ctrl.total}} € </h3> 
+                <input type="button" value="Modifier" ng-click='$ctrl.changePage("modifier")'> 
             </div>
         </div>
         <br>
@@ -34,12 +34,12 @@
 
     <div class="row" style="border:1px solid black">
             <br>
-            <img ng-style="Ctrl.myStyleEmporter" ng-model="emporter" src='../../img/aEmporter.jpg' ng-click="Ctrl.aEmporter() ">
-            <img ng-style="Ctrl.myStyleLivraison"  class="col-xs-offset-3" src='../../img/aLivrer.jpg' ng-click="Ctrl.aLivrer()">
+            <img ng-style="$ctrl.myStyleEmporter" ng-model="emporter" src='../../img/aEmporter.jpg' ng-click="$ctrl.aEmporter() ">
+            <img ng-style="$ctrl.myStyleLivraison"  class="col-xs-offset-3" src='../../img/aLivrer.jpg' ng-click="$ctrl.aLivrer()">
             <br>
             <br>
             <div class="col-xs-offset-9">
-                <input type="button" ng-click="Ctrl.valider()" class="btn btn-success" value="Confirmer la commande">
+                <input type="button" ng-click="$ctrl.valider()" class="btn btn-success" value="Confirmer la commande">
             </div>
             <br>
     </div>

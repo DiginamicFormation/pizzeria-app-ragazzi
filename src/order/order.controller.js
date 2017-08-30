@@ -1,39 +1,16 @@
 export default class OrderController{
-    constructor($http,OrderService){
+    constructor($http,$location){
         this.$http = $http
-        this.OrderService = OrderService
+        this.$location = $location
         this.result = []
         this.pizzasOrder = []
     }
-    $onInit(){
-        this.order = this.$http.get('http://localhost:3000/orders/1')
-        .then((res)=>{
-            return res.data;
-        })        
-        this.order.then(res=>{
-            this.pizzasOrder = res.pizzas
-            this.total = res.total
-        })
-        this.pizzas = this.$http.get('http://localhost:3000/pizzas')
-        .then(res=>{
-            return res.data
-        })
-        this.pizzas.then(res=>{
-            res.forEach(element=>{
-              return  this.pizzasOrder.forEach(pizza=>{
-                   if(pizza.id===element.id){
-                       this.elt = element
-                       this.elt.quantity = pizza.quantity
-                       this.result.push(this.elt)
-                   }                   
-               })
-               
-            })
-        })
-                    
-    }
-    aEmporter(){
+    $onInit(){       
+        this.pizzasList = JSON.parse(localStorage['shoppingCart'])
+        this.total = JSON.parse(localStorage['shoppingCartTotal'])    
         
+    }
+    aEmporter(){ 
         if(this.myStyleEmporter == undefined){
             this.myStyleEmporter={border: 'solid 2px blue'}
             this.selection = "emporter"
@@ -65,7 +42,15 @@ export default class OrderController{
             }
         }
     }
-      
+    
+    changePage(adress){
+        if(adress == 'modifier'){
+            this.$location.path('/shoppingCart')
+        }else if(adress == 'valider'){
+            this.$location.path('/home')
+        }
+    }
 }
 
-OrderController['$inject'] = ['$http']
+
+OrderController['$inject'] = ['$http','$location']
