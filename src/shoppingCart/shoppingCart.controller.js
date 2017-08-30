@@ -21,6 +21,9 @@ export default class ShoppingCartController{
       })
       localStorage['shoppingCart'] = JSON.stringify(newTab);
       this.shoppingCart = newTab
+      if(this.shoppingCart.length == 0){
+          this.$location.path('/home')
+      }
       this.total()
     }
     update(quantity,item){

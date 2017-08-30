@@ -1,9 +1,8 @@
 export default class OrderController{
-    constructor($http,$location){
+    constructor($http,$location,$sessionStorage){
         this.$http = $http
         this.$location = $location
-        this.result = []
-        this.pizzasOrder = []
+        this.$sessionStorage = $sessionStorage
     }
     $onInit(){       
         this.pizzasList = JSON.parse(localStorage['shoppingCart'])
@@ -40,6 +39,26 @@ export default class OrderController{
             }else{
                 alert('Veuillez venir dans 42 minutes merci :)')
             }
+            var date = new Date()
+            this.userConnected = JSON.parse(this.$sessionStorage.get('userConnected'));
+            this.order = {
+                'idOrder': this.stringGen(),
+                'pizzas': this.pizzasList,
+                'idUser':1,
+                // this.userConnected.id,
+                'date': date.getDay() +'/'+ date.getMonth() +'/'+date.getFullYear() ,
+                'total':this.total,
+                'statut':this.selection
+            }
+            this.$http({
+                url: 'http://localhost:3000/orders',
+                method: 'POST',
+                data: this.order
+              })
+              localStorage.removeItem('shoppingCart')
+              localStorage.removeItem('shoppingCartTotal')
+              this.$location.path('/home')
+          
         }
     }
     
@@ -50,7 +69,18 @@ export default class OrderController{
             this.$location.path('/home')
         }
     }
+    stringGen()
+    {
+        var text = " ";
+        
+        var charset = "abcdefghijklmnopqrstuvwxyz0123456789";
+        
+        for( var i=0; i < 10; i++ )
+            text += charset.charAt(Math.floor(Math.random() * charset.length));
+        
+        return text;
+    }
 }
 
 
-OrderController['$inject'] = ['$http','$location']
+OrderController['$inject'] = ['$http','$location','$sessionStorage']
