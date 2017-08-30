@@ -6,7 +6,7 @@ export default class UserService{
     this.$sessionStorage = $sessionStorage;
     this.UrlService = UrlService;
     this.$location = $location;
-
+    
     this.tabUsers = [];
     this.result = 'unknown';
     this.foundUser = false;
@@ -126,7 +126,7 @@ export default class UserService{
 removeUser(){
   this.$sessionStorage.remove("userConnected");
   this.$location.path("/home");
-
+  //this.$root.reload();
 }
 
 
