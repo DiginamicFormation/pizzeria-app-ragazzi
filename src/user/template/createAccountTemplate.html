@@ -56,9 +56,20 @@ float: right;
 .link div button a{
   color: black;
 }
+
+.result{
+  margin-left: 30px;
+  display: block;
+  margin: 15px;
+}
+
+.result span{
+  background: #e8f664; ;
+}
 </style>
 
 <div ng-controller='UserController as userCtl'>
+
 <div class="well">
 			<div id="myBorder"  class="col-lg-offset-4" >
 				<span id="labelNewCollab" class="label label-default ">New Account</span>
@@ -68,6 +79,13 @@ float: right;
          </div>
 
        </div>
+
+       <div class="result" class="row ">
+        <div class="col-lg-4 col-lg-offset-4 " >
+         <span>{{userCtl.result}}</span>
+        </div>
+
+      </div>
 
 				<div id="myForm">
 
