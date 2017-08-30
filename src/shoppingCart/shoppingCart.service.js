@@ -1,8 +1,9 @@
 export default class ShoppingCartService {
-   
+
     constructor($http) {
         this.$http = $http;
         this.pizzasList = [1,2];
+        this.shoppingCart = []
     }
 
     findPizzaByPizzaId(pizzaId) {
@@ -10,10 +11,6 @@ export default class ShoppingCartService {
             .then(response => {
                 return response.data;
             }, response => {});
-    }
-
-    ajoutPanier(pizzaId) {
-        this.pizzasList.push(pizzaId);  
     }
 
 }

@@ -232,31 +232,5 @@
     }
   ],
   "orders": [
-    {
-      "id": 1,
-      "idUser": 3,
-      "pizzas": [
-        {
-          "id": 1,
-          "quantity": 1
-        },
-        {
-          "id": 2,
-          "quantity": 2
-        }
-      ],
-      "total": 34.5
-    },
-    {
-      "id": 2,
-      "idUser": 2,
-      "pizzas": [
-        {
-          "id": 1,
-          "quantity": 1
-        }
-      ],
-      "total": 10.5
-    }
-  ]
+     ]
 }

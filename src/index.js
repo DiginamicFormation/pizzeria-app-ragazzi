@@ -37,7 +37,9 @@ angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name,pizza
 		})
 
 		.otherwise({
-			redirectTo: '/order'
+
+			redirectTo: '/home'
+
 		})
 
 	})
