@@ -1,6 +1,6 @@
 export default class UserController {
 
-	constructor($scope,$http, $log, UserService, $location){
+	constructor($scope,$http, $log, UserService, $location, $window){
 		this.$scope = $scope;
 		this.$http = $http;
 		this.$log = $log;
@@ -9,6 +9,7 @@ export default class UserController {
 		this.result = '';
 		this.account = {};
 		this.tabUsers = [];
+		this.$window = $window;
 	}
 
 
@@ -72,7 +73,7 @@ getUserConnected(){
 
 removeUser(){
 	this.UserService.removeUser();
-
+	//this.$window.location.reload();
 }
 
 changePage(link){
@@ -81,4 +82,4 @@ changePage(link){
 
 }
 
-UserController['$inject'] = ['$scope','$http', '$log', 'UserService','$location'];
+UserController['$inject'] = ['$scope','$http', '$log', 'UserService','$location', '$window'];
