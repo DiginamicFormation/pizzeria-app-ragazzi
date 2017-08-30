@@ -22,33 +22,31 @@ export default class PizzaController {
 
 	addPizza(pizzaId) {
 		if (localStorage.getItem('shoppingCart') == null) {
-					this.ShoppingCartService.findPizzaByPizzaId(pizzaId)
-								.then(pizza => {
-										pizza.quantity = 1
-										this.shoppingCart.push(pizza)
-										localStorage['shoppingCart'] = JSON.stringify(this.shoppingCart)
-								})
-				}
-
-		else {
-				this.shoppingCart = JSON.parse(localStorage['shoppingCart'])
-				this.notFound = true
-				this.shoppingCart.forEach((pizza)=>{
-						if(pizza.id === pizzaId){
-								pizza.quantity += 1
-								this.notFound = false
-								localStorage['shoppingCart'] = JSON.stringify(this.shoppingCart)
-						}
-				}, this);
-				if(this.notFound){
-					this.ShoppingCartService.findPizzaByPizzaId(pizzaId)
-								.then(pizza => {
-										pizza.quantity = 1
-										this.shoppingCart.push(pizza)
-										localStorage['shoppingCart'] = JSON.stringify(this.shoppingCart)
-								})
-				}
+			this.ShoppingCartService.findPizzaByPizzaId(pizzaId)
+				.then(pizza => {
+						pizza.quantity = 1
+						this.shoppingCart.push(pizza)
+						localStorage['shoppingCart'] = JSON.stringify(this.shoppingCart)
+				})
+		} else {
+			this.shoppingCart = JSON.parse(localStorage['shoppingCart'])
+			this.notFound = true
+			this.shoppingCart.forEach((pizza)=>{
+					if(pizza.id === pizzaId){
+							pizza.quantity += 1
+							this.notFound = false
+							localStorage['shoppingCart'] = JSON.stringify(this.shoppingCart)
+					}
+			}, this);
+			if(this.notFound){
+				this.ShoppingCartService.findPizzaByPizzaId(pizzaId)
+							.then(pizza => {
+									pizza.quantity = 1
+									this.shoppingCart.push(pizza)
+									localStorage['shoppingCart'] = JSON.stringify(this.shoppingCart)
+							})
 			}
+		}
 	}
 
 }
