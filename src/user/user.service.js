@@ -6,6 +6,7 @@ export default class UserService{
     this.$sessionStorage = $sessionStorage;
     this.UrlService = UrlService;
     this.$location = $location;
+    
     this.tabUsers = [];
     this.result = 'unknown';
     this.foundUser = false;
@@ -95,41 +96,39 @@ export default class UserService{
 
 
   }
-
+//----------------------Modify account-----------------------------
   modifyAccount(account){
-    this.userToModify = undefined;
-    this.getAllUsers();
-    this.tabUsers.forEach((e)=>{
-      if(account.email === e.email){
 
-        this.userToModify = {
-          "email": newAccount.email,
-          "password": newAccount.password,
-          "firstname": newAccount.firstname,
-          "lastname": newAccount.lastname,
-          "adress": newAccount.adress
-        }
+          this.$http.get(this.UrlService.users+'/'+account.id)
+          .then((res)=>{
+            this.acc = res.data;
 
-      }
-    })
+            this.acc.email = account.email;
+            this.acc.password = account.password;
+            this.acc.firstname = account.firstname;
+            this.acc.lastname = account.lastname;
+            this.acc.adress = account.adress;
 
-    console.log(this.userToModify);
+            this.$http({url : this.UrlService.users+'/'+account.id, method: 'PUT', data: this.acc})
+            .then((res)=>{
+                return res.status + ' -- ' + res.statusText
+                this.$log.log("Update OK !")
+              },(err)=>{
+                return err.status + ' -- ' + err.statusText
+                this.$log.log("Update failed !")
+              })
 
-    this.tabUsers.push(this.userToModify);
+          },(err)=>{
 
-    this.$http({
-        url: this.UrlService.users,
-        method: 'PUT',
-        data: this.tabUsers
-      }).then((res)=>{
-        return res.status + ' -- ' + res.statusText
-        this.$log.log("Update OK !")
-      },(err)=>{
-        return err.status + ' -- ' + err.statusText
-        this.$log.log("Update failed !")
-      })
-
+          })
   }
+
+removeUser(){
+  this.$sessionStorage.remove("userConnected");
+  this.$location.path("/home");
+  //this.$root.reload();
+}
+
 
 //-------------------change the page--------------------------------
 
