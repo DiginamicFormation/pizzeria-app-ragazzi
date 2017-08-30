@@ -11,7 +11,7 @@ const pizzaModule = angular.module('pizzaModule', [])
 	.config(($routeProvider) => {
 		$routeProvider
 		.when('/pizza/list', {
-			template: '<rag-pizza-list></rag-pizza-list>'
+			template: '<rag-pizza-list afficher-filtre="true" nb-pizzas=$ctrl.pizzas.length></rag-pizza-list>'
 		})
 	})
 

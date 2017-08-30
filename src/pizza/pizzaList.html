@@ -1,15 +1,14 @@
 <section>
-
 	<div>
 
-		<ul class="list-inline">
-			<li><a href="#" ng-click='cat=""' >Tous ({{$ctrl.pizzas.length}})</a></li>
+		<ul class="list-inline" ng-if="$ctrl.afficherFiltre">
+			<li><a href="#" ng-click='$ctrl.cat=""' >Tous ({{$ctrl.pizzas.length}})</a></li>
 
-			<li><a href="#" ng-click='cat="viande"'>Viande ({{$ctrl.pizzasViande.length}})</a></li>
+			<li><a href="#" ng-click='$ctrl.cat="viande"'>Viande ({{$ctrl.pizzasViande.length}})</a></li>
 
-			<li><a href="#" ng-click='cat="poisson"'>Poisson ({{$ctrl.pizzasSansViande.length}})</a></li>
+			<li><a href="#" ng-click='$ctrl.cat="poisson"'>Poisson ({{$ctrl.pizzasSansViande.length}})</a></li>
 
-			<li><a href="#" ng-click='cat="sans_viande"'>Sans viande ({{$ctrl.pizzasPoisson.length}})</a></li>
+			<li><a href="#" ng-click='$ctrl.cat="sans_viande"'>Sans viande ({{$ctrl.pizzasPoisson.length}})</a></li>
 		</ul>
 
 		<br>
@@ -17,7 +16,7 @@
 		<div class="row" >
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-				<div ng-repeat="pizza in $ctrl.pizzas | categories:cat" class="col-xs-12 col-sm-6 col-md-4 col-lg-4" style="border: solid grey 0.5px; margin: 10px 10px; box-shadow: 5px 5px 2px grey">
+				<div ng-repeat="pizza in $ctrl.pizzas | categories:$ctrl.cat | limitTo:$ctrl.nbPizzas" class="col-xs-12 col-sm-6 col-md-4 col-lg-4" style="border: solid grey 0.5px; margin: 10px 10px; box-shadow: 5px 5px 2px grey">
 
 					<h3>{{pizza.name}}</h3>
 					<hr>

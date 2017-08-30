@@ -1,15 +1,19 @@
 export default class PizzaController {
-	constructor(PizzaService, ShoppingCartService) {
+	constructor(PizzaService, ShoppingCartService, $rootScope) {
 		this.PizzaService = PizzaService
-		this.pizzaFilter = "categories:cat"
 		this.ShoppingCartService = ShoppingCartService
 		this.shoppingCart = []
+		this.$rootScope = $rootScope
 	}
 
 	$onInit() {
+		this.cat = ''
+
 		this.PizzaService.getAllPizzas()
 			.then((tabPizzas) => {
 				this.pizzas = tabPizzas
+
+				this.nbPizzas = this.pizzas.length
 
 				this.pizzasViande = tabPizzas.filter((pizza) => {return pizza.categorie === "viande"})
 				this.pizzasSansViande = tabPizzas.filter((pizza) => {return pizza.categorie === "sans_viande"})
@@ -21,12 +25,16 @@ export default class PizzaController {
 	}
 
 	addPizza(pizzaId) {
+
+
 		if (localStorage.getItem('shoppingCart') == null) {
 			this.ShoppingCartService.findPizzaByPizzaId(pizzaId)
 				.then(pizza => {
 						pizza.quantity = 1
 						this.shoppingCart.push(pizza)
 						localStorage['shoppingCart'] = JSON.stringify(this.shoppingCart)
+						this.$rootScope.$emit('addPizzaEvent', pizza.id)
+
 				})
 		} else {
 			this.shoppingCart = JSON.parse(localStorage['shoppingCart'])
@@ -36,6 +44,8 @@ export default class PizzaController {
 							pizza.quantity += 1
 							this.notFound = false
 							localStorage['shoppingCart'] = JSON.stringify(this.shoppingCart)
+							this.$rootScope.$emit('addPizzaEvent', pizza.id)
+
 					}
 			}, this);
 			if(this.notFound){
@@ -44,11 +54,16 @@ export default class PizzaController {
 									pizza.quantity = 1
 									this.shoppingCart.push(pizza)
 									localStorage['shoppingCart'] = JSON.stringify(this.shoppingCart)
+									this.$rootScope.$emit('addPizzaEvent', pizza.id)
+
 							})
 			}
 		}
+
+
+
 	}
 
 }
 
-PizzaController.$inject = ['PizzaService', 'ShoppingCartService']
+PizzaController.$inject = ['PizzaService', 'ShoppingCartService', '$rootScope']
