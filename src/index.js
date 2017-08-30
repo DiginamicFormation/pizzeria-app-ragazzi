@@ -19,7 +19,7 @@ angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name,pizza
 	.component('ragHome', homeComponent)
 	.config(($routeProvider, $locationProvider) => {
 
-		$locationProvider.html5Mode(false)
+		$locationProvider.html5Mode(true)
 
 		$routeProvider
 
