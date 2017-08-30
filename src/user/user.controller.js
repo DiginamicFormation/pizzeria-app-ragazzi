@@ -26,7 +26,7 @@ export default class UserController {
 		this.resetForm();
 		this.result = 'Created OK !';
 
-		this.$location.path('/order');
+		this.$location.path('/home');
 
 
 	}

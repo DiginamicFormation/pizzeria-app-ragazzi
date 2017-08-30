@@ -61,7 +61,7 @@ export default class UserService{
 
                     this.$log.log("==> Infos loggin OK :D!");
                     this.$log.log("You are connected !");
-                    this.$location.path('/order');
+                    this.$location.path('/home');
               }
             })
 
@@ -125,7 +125,7 @@ export default class UserService{
 
 removeUser(){
   this.$sessionStorage.remove("userConnected");
-  this.$location.path("/order");
+  this.$location.path("/home");
 
 }
 

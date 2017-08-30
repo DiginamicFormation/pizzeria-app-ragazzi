@@ -7,7 +7,7 @@ export default class ShoppingCartController{
     }
 
     $onInit() {
-        if (localStorage.getItem('shoppingCart') == null) {
+        if (localStorage.getItem('shoppingCart') == null || localStorage.getItem('shoppingCart') ==[]) {
             this.$location.path('home')
         } else {
             this.shoppingCart = JSON.parse(localStorage['shoppingCart'])
@@ -23,6 +23,7 @@ export default class ShoppingCartController{
       this.shoppingCart = newTab
       if(this.shoppingCart.length == 0){
           this.$location.path('/home')
+          localStorage.removeItem('shoppingCart')
       }
       this.total()
     }

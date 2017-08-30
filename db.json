@@ -229,8 +229,50 @@
       "lastname": "ds",
       "adress": "dsd",
       "id": 21
+    },
+    {
+      "email": "jerome.samson07@gmail.com",
+      "password": "test",
+      "firstname": "Samson",
+      "lastname": "jerome",
+      "adress": "Parbayse",
+      "id": 22
+    },
+    {
+      "email": "jeje.sam64@gmail.com",
+      "password": "admin",
+      "firstname": "test",
+      "lastname": "yryd",
+      "adress": "ezez",
+      "id": 23
+    },
+    {
+      "email": "jeje.sam64@gmail.com",
+      "password": "admin",
+      "firstname": "test",
+      "lastname": "testaaa",
+      "adress": "te",
+      "id": 24
     }
   ],
   "orders": [
-     ]
+    {
+      "idOrder": " izqg9fom9i",
+      "pizzas": [
+        {
+          "id": 1,
+          "name": "4 fromages",
+          "price": "10.5",
+          "imageUrl": "img/Pizza_4fromages.jpg",
+          "categorie": "sans_viande",
+          "quantity": 3
+        }
+      ],
+      "idUser": "jeje.sam64@gmail.com",
+      "date": "3/7/2017",
+      "total": 31.5,
+      "statut": "livraison",
+      "id": 1
+    }
+  ]
 }
