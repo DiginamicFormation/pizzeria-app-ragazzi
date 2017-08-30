@@ -1,6 +1,8 @@
 import userComponent from './component/user.component'
 import userConnexionComponent from './component/user.connexion.component'
 import userForgotPasswordComponent from './component/user.forgotPassword.component'
+import userModifyAccountComponent from './component/user.modifyAccount.component'
+import userInfosComponent from './component/user.infos.component'
 
 import UserService from './user.service'
 import UserController from './user.controller'
@@ -15,6 +17,8 @@ const userModule = angular.module('userModule',[require('angular-sessionstorage'
 .component('ragUserCreate', userComponent)
 .component('userConnexionComponent', userConnexionComponent)
 .component('userForgotPasswordComponent', userForgotPasswordComponent)
+.component('userModifyAccountComponent', userModifyAccountComponent)
+.component('userInfosComponent', userInfosComponent)
 
 .config(($routeProvider)=>{
 	$routeProvider
@@ -29,6 +33,14 @@ const userModule = angular.module('userModule',[require('angular-sessionstorage'
 
 	.when('/forgotPassword',{
 		template : '<user-forgot-password-component></user-forgot-password-component>'
+	})
+
+	.when('/modifyAccount',{
+		template : '<user-modify-account-component></user-modify-account-component>'
+	})
+
+	.when('/displayInfos',{
+		template : '<user-infos-component></user-infos-component>'
 	})
 
 })

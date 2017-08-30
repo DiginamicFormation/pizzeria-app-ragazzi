@@ -7,7 +7,6 @@ export default class UserService{
     this.UrlService = UrlService;
     this.$location = $location;
     this.tabUsers = [];
-    this.userConnected = undefined;
     this.result = 'unknown';
     this.foundUser = false;
   }
@@ -55,15 +54,13 @@ export default class UserService{
             this.getAllUsers();
             this.tabUsers.forEach((user)=>{
               if( (user.email === acc.email) && (user.password === acc.password) ){
-                  this.userConnected = user;
-                  this.$log.log("==> Infos loggin OK :D!");
-                  this.foundUser = true;
 
-                  this.$sessionStorage.put('userConnected', this.userConnected);
+                  this.foundUser = true;
+                  this.$sessionStorage.put('userConnected',JSON.stringify(user))
+
+                    this.$log.log("==> Infos loggin OK :D!");
                     this.$log.log("You are connected !");
-                    this.result = 'Connected ! :)';
                     this.$location.path('/home');
-                    console.log(this.$sessionStorage.get('userConnected'))
               }
             })
 
@@ -75,34 +72,80 @@ export default class UserService{
 }
 
 //--------------------getForgottentPassword-----------------------
+
   getForgottenPassword(account){
-    this.$http.get(this.UrlService.users+'/?email='+ account.email)
-    .then((res)=>{
-      return res.data.password;
-      this.$log.log('password oublié est : '+res.data.password)
-      this.$log.log("Got forgotten password OK :D !" + err.status + ' ' + err.statusText)
-    },(err)=>{
-      this.$log.log("Problem technique ! "+ err.status + ' ' + err.statusText)
-    })
+    return this.$http.get(this.UrlService.users+'/?email='+ account.email)
+  }
+
+
+//-------------------Get userConnected-----------------------------
+  getUserConnected(){
+
+    if(JSON.parse(this.$sessionStorage.get('userConnected')) != undefined){
+      try {
+        this.userConnected = JSON.parse(this.$sessionStorage.get('userConnected'));
+        this.$log.log ('Hi user :) '+this.userConnected.email + ' -- ' + this.userConnected.password);
+        return this.userConnected;
+      } catch (e) {
+        this.$log.log ('error: '+ e.message);
+      }
+    }else{
+      this.$log.log ('No user connected ! :(');
+    }
+
 
   }
+
+  modifyAccount(account){
+    this.userToModify = undefined;
+    this.getAllUsers();
+    this.tabUsers.forEach((e)=>{
+      if(account.email === e.email){
+
+        this.userToModify = {
+          "email": newAccount.email,
+          "password": newAccount.password,
+          "firstname": newAccount.firstname,
+          "lastname": newAccount.lastname,
+          "adress": newAccount.adress
+        }
+
+      }
+    })
+
+    console.log(this.userToModify);
+
+    this.tabUsers.push(this.userToModify);
+
+    this.$http({
+        url: this.UrlService.users,
+        method: 'PUT',
+        data: this.tabUsers
+      }).then((res)=>{
+        return res.status + ' -- ' + res.statusText
+        this.$log.log("Update OK !")
+      },(err)=>{
+        return err.status + ' -- ' + err.statusText
+        this.$log.log("Update failed !")
+      })
+
+  }
+
 //-------------------change the page--------------------------------
 
 changePage(link){
+
   if(link === 'newAccount'){
     this.$location.path('/createAccount');
-
   }else if(link === 'forgottenPasswords'){
     this.$location.path('/forgotPassword');
   }else if(link === 'login'){
     this.$location.path('/connectAccount');
+  }else if(link === 'edit'){
+    this.$location.path('/modifyAccount');
   }
 
 
 }
-
-
-
-
 
 }

@@ -11,7 +11,8 @@ export default class UserController {
 
 
 	$onInit(){
-		this.verifyIfUserLogged();
+		//this.verifyIfUserLogged();
+		this.getUserConnected();
 	}
 
 	getAllUsers(){
@@ -38,9 +39,28 @@ connectAccount(account){
 }
 
 getForgottenPassword(account){
-	this.forgottenPassword = this.UserService.getForgottenPassword(account);
+
+	if(account != null ){
+		this.UserService.getForgottenPassword(account)
+	.then((res)=>{
+			this.forgottenPassword = res.data[0].password;
+			this.$log.log('get password OK! '+res.data[0].password)
+	},(err)=>{
+		this.$log.log('erreur'+ err.statusText)
+	})
+}else if(account == null ) {
+	this.forgottenPassword = 'sorry but email incorrect ! '
 }
 
+}
+
+modifyAccount(newAccount){
+	this.UserService.modifyAccount(newAccount);
+}
+
+getUserConnected(){
+	this.userConnected = this.UserService.getUserConnected();
+}
 
 changePage(link){
 	this.UserService.changePage(link);

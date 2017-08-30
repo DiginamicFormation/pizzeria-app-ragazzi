@@ -1,0 +1,209 @@
+<style>
+
+#bg{
+
+  background-image: url('../img/nature.jpg');
+}
+
+#myBorder{
+background: #33304e;
+width: 510px;
+height: auto;
+
+}
+#myForm{
+padding-top: 33px;
+}
+#labelNewCollab{
+
+	padding: 5px 9px;
+	display: inline-block;
+	color: #111;
+	font-family: 'Helvetica Neue', sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	line-height: 1;
+	text-align: center;
+	background: #e6c304;
+}
+
+#buttonCreate{
+	padding: 8px 95px;
+	margin-top: 20px;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-family: 'open sans',sans-serif;
+	background: white;
+	margin-bottom: 11px;
+}
+
+#labelMessage{
+
+margin-bottom: 63px;
+margin-top: -30px;
+
+}
+
+#iconCheckOk img{
+	height: 40px;
+float: right;
+
+}
+
+/*Page de list collabs*/
+
+
+
+.myBox{
+background: #ffbc33;
+color: #020101;
+height: 20em;
+width: 26em;
+margin-bottom: 47px;
+}
+
+hr{
+	padding: 0px;
+border: 1px solid #f0cbcb;
+
+}
+
+.infosGauche{
+float: left;
+margin-left: 1em;
+margin-top: 3em;
+font-family: verdana;
+
+}
+
+.infosDroite{
+	float: right;
+margin-right: 1em;
+margin-top: 3em;
+font-family: verdana;
+}
+
+img{
+padding: 0px;
+height: 86px;
+margin: 0px;
+margin-left: 9em;
+
+}
+
+.nomPrenom{
+	font-size: 18px;
+font-family: open sans;
+text-align: center;
+text-transform: uppercase;
+font-weight: bold;
+
+}
+
+.actions{
+	float: right;
+margin-top: -8em;
+
+}
+
+.buttonAction{
+background: #ededec;
+margin-top: 5px;
+font-size: 15px;
+padding: 1px 22px;
+font-family: tahoma;
+border-radius: 6px;
+
+
+}
+
+.buttonAction a{
+	color: black;
+}
+
+.divInfos{
+background: #e9e9e9;
+display: block;
+height: 126px;
+
+
+}
+
+.buttonAction:hover{
+	background: #fff;
+	color: white;
+}
+
+.divInfos:hover{
+	background: #f67979;
+	color: black;
+
+}
+
+.infosGaucheRecherche{
+font-size: 17px;
+font-family: open sans;
+color: black;
+
+}
+
+
+.infosDroiteRecherche{
+font-size: 17px;
+font-family: open sans;
+color: black;
+
+}
+.zoneRecherche{
+background: #b7e0b7;
+padding: 48px;
+
+
+}
+
+
+</style>
+
+<div ng-controller = 'UserController as userCtl'>
+
+  <div class="container" id="bg">
+<h3>Bonjour {{userCtl.userConnected.firstname}} :)</h3>
+	<div class="row">
+<c:forEach var="collab" items="${listeCollaborateurs}"  >
+	<div class="col-lg-4 col-lg-offset-4">
+		<div class="myBox">
+			<div class="nomPrenom">
+				<span>{{userCtl.userConnected.firstname}}</span>
+				<span>{{userCtl.userConnected.lastname}}</span>
+			</div>
+			<hr>
+			<div id="image"><img ng-src="../img/dev_man_young.png"></div>
+			<div class="actions">
+				<div  class="buttonAction"><a id="buttonDetail" href="#">More</a></div>
+        <div  class="buttonAction" ng-click='userCtl.changePage("edit")' ><a id="buttonDetail" href="#">Edit</a></div>
+
+			</div>
+		<div class="divInfos">
+			<div class="infosGauche">
+				<span>Email</span><br>
+				<span>Password</span><br>
+				<span>Adress</span><br>
+				<span>Tél</span><br>
+			</div>
+			<div class="infosDroite">
+				<span>{{userCtl.userConnected.email}}</span><br>
+				<span>{{userCtl.userConnected.password}}</span><br>
+				<span>{{userCtl.userConnected.adress}}</span><br>
+				<span>075429654</span><br>
+			</div>
+		</div>
+		</div>
+	</div>
+</c:forEach>
+	</div>
+</div>
+
+
+
+</div>
