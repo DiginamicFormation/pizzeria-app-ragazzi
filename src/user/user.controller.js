@@ -6,7 +6,7 @@ export default class UserController {
 		this.$log = $log;
 		this.UserService = UserService;
 		this.$location = $location;
-		this.result = '';
+		this.result = undefined;
 		this.account = {};
 		this.tabUsers = [];
 		this.$window = $window;
@@ -63,8 +63,15 @@ getForgottenPassword(account){
 }
 
 modifyAccount(newAccount){
-	this.UserService.modifyAccount(newAccount);
-	this.result = 'Updated OK !'
+	this.UserService.modifyAccount(newAccount)
+	.then((res)=>{
+		if(res.statusText === 'OK'){
+			this.result = 'Updated OK !'
+		}
+	},(err)=>{
+		this.result = err.statusText;
+	})
+
 }
 
 getUserConnected(){

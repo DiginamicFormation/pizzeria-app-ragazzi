@@ -23,6 +23,21 @@ text-align: center;
 background: #e6c304;
 }
 
+
+#labelResult{
+
+padding: 5px 9px;
+display: inline-block;
+color: #111;
+font-family: 'Helvetica Neue', sans-serif;
+font-size: 20px;
+font-weight: bold;
+letter-spacing: -1px;
+line-height: 1;
+text-align: center;
+background: #e6c304;
+}
+
 #buttonCreate{
 padding: 8px 95px;
 margin-top: 20px;
@@ -64,7 +79,7 @@ float: right;
 <div class="well">
 			<div id="myBorder"  class="col-lg-offset-4" >
 				<span id="labelNewCollab" class="label label-default ">Modify Account</span>
-
+        <span ng-show='userCtl.result != undefined' id="labelResult" class="label label-default">{{userCtl.result}}</span>
 				<div id="myForm">
 
 					<form  accept-charset="UTF-8"   >

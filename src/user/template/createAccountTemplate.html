@@ -1,16 +1,13 @@
 <style>
-
 #myBorder{
 background: #33304e;
 width: 510px;
 height: auto;
-
 }
 #myForm{
 padding-top: 33px;
 }
 #labelNewCollab{
-
 padding: 5px 9px;
 display: inline-block;
 color: #111;
@@ -22,7 +19,6 @@ line-height: 1;
 text-align: center;
 background: #e6c304;
 }
-
 #buttonCreate{
 padding: 8px 95px;
 margin-top: 20px;
@@ -32,19 +28,14 @@ font-family: 'open sans',sans-serif;
 background: white;
 margin-bottom: 11px;
 }
-
 #labelMessage{
-
 margin-bottom: 63px;
 margin-top: -30px;
-
 }
-
 #iconCheckOk img{
 height: 40px;
 float: right;
 }
-
 .link{
   font-family: 'open sans',sans-serif;
   font-size: 12px;
@@ -53,20 +44,10 @@ float: right;
   margin-bottom: 15px;
   margin-right: 39px;
 }
-
 .link div button a{
   color: black;
 }
 
-.result{
-  margin-left: 30px;
-  display: block;
-  margin: 15px;
-}
-
-.result span{
-  background: #e8f664; ;
-}
 </style>
 
 <div ng-controller='UserController as userCtl'>
@@ -74,20 +55,13 @@ float: right;
 <div class="well">
 			<div id="myBorder"  class="col-lg-offset-4" >
 				<span id="labelNewCollab" class="label label-default ">New Account</span>
+        <span ng-show='userCtl.result!=undefined' id="labelNewCollab">{{userCtl.result}}</span>
 				<div class="link" class="row">
          <div class="col-lg-offset-9 " >
           <button ng-click='userCtl.changePage("login")' class="btn btn-sm btn-info btn-outline-info">Login</button>
          </div>
 
        </div>
-
-       <div class="result" class="row ">
-        <div class="col-lg-4 col-lg-offset-4 " >
-         <span>{{userCtl.result}}</span>
-        </div>
-
-      </div>
-
 				<div id="myForm">
 
 					<form  accept-charset="UTF-8"   >
