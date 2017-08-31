@@ -20,7 +20,7 @@ angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name,pizza
 	.config(($routeProvider, $locationProvider) => {
 
 		$locationProvider.html5Mode(true)
-		.hashPrefix('!')
+
 
 		$routeProvider
 
@@ -29,13 +29,7 @@ angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name,pizza
 		})
 
 
-		.when('/createAccount',{
-			template:'<rag-user-create></rag-user-create>'
-		})
 
-		.when('/connectAccount',{
-			template:'<user-connexion-component></user-connexion-component>'
-		})
 
 		.otherwise({
 			redirectTo: "/home"

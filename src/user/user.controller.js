@@ -42,7 +42,7 @@ verifyIfUserLogged(){
 
 connectAccount(account){
 	 this.UserService.connectAccount(account)
-
+	 this.result = this.UserService.result;
 }
 
 getForgottenPassword(account){

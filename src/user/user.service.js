@@ -7,7 +7,7 @@ export default class UserService{
     this.UrlService = UrlService;
     this.$location = $location;
     this.tabUsers = [];
-    this.result = undefined;
+    //this.result = undefined;
     this.foundUser = false;
     this.$timeout = $timeout;
   }
@@ -52,6 +52,7 @@ export default class UserService{
   //---------------Connect Account-----------------------
   connectAccount(acc){
   if(this.$sessionStorage.get('userConnected') == undefined){
+    if(acc != undefined){
       this.$log.log(this.$sessionStorage.get('userConnected'))
             this.getAllUsers()
             .then((res)=>{
@@ -61,13 +62,13 @@ export default class UserService{
                 if( (user.email === acc.email) && (user.password === acc.password) ){
 
                     this.$sessionStorage.put('userConnected',JSON.stringify(user))
-                    return this.foundUser = true;
+                    this.foundUser = true;
                 }
               })
 
               if(!this.foundUser){
                   this.$log.log("==> Infos loggin failed :(");
-
+                    this.result = 'Infos loggin failed :(';
               }else{
                 this.$log.log("==> You are connected :)");
                 this.$timeout(()=>{
@@ -78,8 +79,9 @@ export default class UserService{
               this.$log.log("err: " + err.statusText)
 
             })
-
-
+        }else{
+          this.result = "Please enter your infos !"
+        }
   }
 }
 

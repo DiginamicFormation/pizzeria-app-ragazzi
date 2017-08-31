@@ -8,15 +8,15 @@
                         <th>Image</th>
                         </div>
                         <div class="col-lg-11">
-                        <th>Nom</th>                    
-                        <th>Prix</th>                    
+                        <th>Nom</th>
+                        <th>Prix</th>
                         <th>Quantité</th>
                         </div>
                     </tr>
                 </thead>
                 <tbody ng-repeat="item in $ctrl.shoppingCart track by item.id">
-                        
-                        <td><img ng-src="{{item.imageUrl}}" class="img-responsive" width="20%"> 
+
+                        <td><img ng-src="{{item.imageUrl}}" class="img-responsive" width="20%">
                             <input type="button" ng-click="$ctrl.delete(item)" class="btn btn-danger col-xs-offset-3" value="Supprimer">
                         </td>
                         <td>{{item.name}}</td>
@@ -28,8 +28,8 @@
             </table>
             <div class="row">
                 <div class="col-xs-offset-8">
-                    <h3>Total : {{$ctrl.totalPizza}} € </h3> 
-                    <input type="button" class="btn btn-primary" value="Passer la commande" ng-click="$ctrl.command()"> 
+                    <h3>Total : {{$ctrl.totalPizza}} € </h3>
+                    <input type="button" class="btn btn-primary" value="Passer la commande" ng-click="$ctrl.command()">
                 </div>
             </div>
             <br>
