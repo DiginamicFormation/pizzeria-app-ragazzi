@@ -1,39 +1,15 @@
 export default class OrderController{
-    constructor($http,OrderService){
+    constructor($http,$location,$sessionStorage){
         this.$http = $http
-        this.OrderService = OrderService
-        this.result = []
-        this.pizzasOrder = []
+        this.$location = $location
+        this.$sessionStorage = $sessionStorage
     }
     $onInit(){
-        this.order = this.$http.get('http://localhost:3000/orders/1')
-        .then((res)=>{
-            return res.data;
-        })        
-        this.order.then(res=>{
-            this.pizzasOrder = res.pizzas
-            this.total = res.total
-        })
-        this.pizzas = this.$http.get('http://localhost:3000/pizzas')
-        .then(res=>{
-            return res.data
-        })
-        this.pizzas.then(res=>{
-            res.forEach(element=>{
-              return  this.pizzasOrder.forEach(pizza=>{
-                   if(pizza.id===element.id){
-                       this.elt = element
-                       this.elt.quantity = pizza.quantity
-                       this.result.push(this.elt)
-                   }                   
-               })
-               
-            })
-        })
-                    
+        this.pizzasList = JSON.parse(localStorage['shoppingCart'])
+        this.total = JSON.parse(localStorage['shoppingCartTotal'])
+
     }
     aEmporter(){
-        
         if(this.myStyleEmporter == undefined){
             this.myStyleEmporter={border: 'solid 2px blue'}
             this.selection = "emporter"
@@ -42,7 +18,7 @@ export default class OrderController{
             this.myStyleEmporter=undefined
             this.selection = undefined
         }
-        
+
     }
     aLivrer(){
         if(this.myStyleLivraison == undefined){
@@ -63,9 +39,47 @@ export default class OrderController{
             }else{
                 alert('Veuillez venir dans 42 minutes merci :)')
             }
+            var date = new Date()
+            this.userConnected = JSON.parse(this.$sessionStorage.get('userConnected'));
+            this.order = {
+                'idOrder': this.stringGen(),
+                'pizzas': this.pizzasList,
+                'idUser': this.userConnected.email,
+                'date': date.getDay() +'/'+ date.getMonth() +'/'+date.getFullYear() ,
+                'total':this.total,
+                'statut':this.selection
+            }
+            this.$http({
+                url: 'http://localhost:3000/orders',
+                method: 'POST',
+                data: this.order
+              })
+              localStorage.removeItem('shoppingCart')
+              localStorage.removeItem('shoppingCartTotal')
+              this.$location.path('/home')
+
         }
     }
-      
+
+    changePage(adress){
+        if(adress == 'modifier'){
+            this.$location.path('/shoppingCart')
+        }else if(adress == 'valider'){
+            this.$location.path('/home')
+        }
+    }
+    stringGen()
+    {
+        var text = " ";
+
+        var charset = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 10; i++ )
+            text += charset.charAt(Math.floor(Math.random() * charset.length));
+
+        return text;
+    }
 }
 
-OrderController['$inject'] = ['$http']
+
+OrderController['$inject'] = ['$http','$location','$sessionStorage']

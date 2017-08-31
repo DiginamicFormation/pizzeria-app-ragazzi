@@ -1,12 +1,17 @@
 export default class UserController {
 
-	constructor($scope,$http, $log, UserService){
+	constructor($scope,$http, $log, UserService, $location, $window, $timeout){
 		this.$scope = $scope;
 		this.$http = $http;
 		this.$log = $log;
 		this.UserService = UserService;
+		this.$location = $location;
+		this.result = undefined;
 		this.account = {};
 		this.tabUsers = [];
+		this.$window = $window;
+		this.$timeout = $timeout;
+
 	}
 
 
@@ -22,6 +27,17 @@ export default class UserController {
 	createAccount(account){
 		this.UserService.createAccount(account)
 		this.resetForm();
+		this.result = 'Created OK !';
+
+		this.$timeout(()=>{
+
+			this.$location.path('/home');
+
+			//this.$window.location.reload();
+
+		}, 2000);
+
+
 	}
 
 	resetForm(){
@@ -55,11 +71,24 @@ getForgottenPassword(account){
 }
 
 modifyAccount(newAccount){
-	this.UserService.modifyAccount(newAccount);
+	this.UserService.modifyAccount(newAccount)
+	.then((res)=>{
+		if(res.statusText === 'OK'){
+			this.result = 'Updated OK !'
+		}
+	},(err)=>{
+		this.result = err.statusText;
+	})
+
 }
 
 getUserConnected(){
 	this.userConnected = this.UserService.getUserConnected();
+}
+
+removeUser(){
+	this.UserService.removeUser();
+	//this.$window.location.reload();
 }
 
 changePage(link){
@@ -68,4 +97,4 @@ changePage(link){
 
 }
 
-UserController['$inject'] = ['$scope','$http', '$log', 'UserService'];
+UserController['$inject'] = ['$scope','$http', '$log', 'UserService','$location', '$window', '$timeout'];

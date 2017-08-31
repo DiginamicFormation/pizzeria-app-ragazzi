@@ -3,7 +3,11 @@ import pizzaCtrl from './pizza.controller'
 
 const pizzaComponent = {
 	template: pizzaListTemplate,
-	controller: pizzaCtrl
+	controller: pizzaCtrl,
+	bindings: {
+		afficherFiltre : '<',
+		nbPizzas : '<'
+	}
 }
 
 export default pizzaComponent

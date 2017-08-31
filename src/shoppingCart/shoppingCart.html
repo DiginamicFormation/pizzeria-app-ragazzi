@@ -22,16 +22,16 @@
                         <td>{{item.name}}</td>
                         <td>{{item.price}} €</td>
                         <td>
-                                <input ng-change="$ctrl.update()" type="number" ng-model="quantity" min="1" max="20">
+                                <input ng-change="$ctrl.update(item.quantity,item)" type="number" ng-model="item.quantity" min="1" max="20">
                         </td>
                 </tbody>
             </table>
             <div class="row">
                 <div class="col-xs-offset-8">
-                    <h3>Total : € </h3> 
-                    <input type="button" class="btn btn-primary" value="Passer la commande" ng-click="Ctrl.save()"> 
+                    <h3>Total : {{$ctrl.totalPizza}} € </h3> 
+                    <input type="button" class="btn btn-primary" value="Passer la commande" ng-click="$ctrl.command()"> 
                 </div>
             </div>
             <br>
-        </div> 
+        </div>
     </div>

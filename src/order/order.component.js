@@ -1,9 +1,9 @@
-import orderController from './order.controller'
+import OrderController from './order.controller'
 import orderHtml from './order.html'
 
 const orderComponent = {
     template:orderHtml,
-    controller:orderController
+    controller:OrderController
 }
 
 export default orderComponent

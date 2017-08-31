@@ -20,6 +20,7 @@ angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name,pizza
 	.config(($routeProvider, $locationProvider) => {
 
 		$locationProvider.html5Mode(true)
+		//.hashPrefix('!')
 
 		$routeProvider
 
@@ -37,7 +38,7 @@ angular.module('pizzeriaApp', ['ngRoute', userModule.name,orderModule.name,pizza
 		})
 
 		.otherwise({
-			redirectTo: '/displayInfos'
+			redirectTo: "/home"
 		})
 
 	})

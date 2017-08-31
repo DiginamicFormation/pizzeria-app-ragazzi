@@ -167,7 +167,8 @@ padding: 48px;
 
 <div ng-controller = 'UserController as userCtl'>
 
-  <div class="container" id="bg">
+
+  <div class="container" id="bg" ng-if = 'userCtl.userConnected != undefined'>
 <h3>Bonjour {{userCtl.userConnected.firstname}} :)</h3>
 	<div class="row">
 <c:forEach var="collab" items="${listeCollaborateurs}"  >
