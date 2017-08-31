@@ -1,4 +1,7 @@
 <style>
+#bg{
+  background-image: url('../img/nature.jpg');
+}
 #myBorder{
 background: #33304e;
 width: 510px;
@@ -52,7 +55,7 @@ float: right;
 
 <div ng-controller='UserController as userCtl'>
 
-<div class="well">
+<div id="bg" class="well">
 			<div id="myBorder"  class="col-lg-offset-4" >
 				<span id="labelNewCollab" class="label label-default ">New Account</span>
         <span ng-show='userCtl.result!=undefined' id="labelNewCollab">{{userCtl.result}}</span>

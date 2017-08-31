@@ -1,4 +1,10 @@
 <style>
+
+#bg{
+
+  background-image: url('../img/nature.jpg');
+}
+
 #myBorder{
 background: #33304e;
 width: 510px;
@@ -45,7 +51,7 @@ float: right;
 
 }
 
-.link{
+.zoneAcc{
   font-family: 'open sans',sans-serif;
   font-size: 12px;
   text-decoration: none;
@@ -54,33 +60,44 @@ float: right;
   margin-right: 99px;
 }
 
-.link div button a{
+.zoneAcc div button a{
   color: black;
 }
 
 
-.link button{
+.zoneAcc button{
   margin-top: : 20px;
+}
+
+.acc{
+  padding: 7px;
+margin-top: -4px;
+margin-right: -17px;
+}
+
+#zoneConnexion{
+      margin-top: 35px;
 }
 </style>
 
 <div ng-controller = 'UserController as userCtl'>
 
 
-<div class="well">
+<div id="bg" class="well">
 			<div id="myBorder"  class="col-lg-offset-4" >
 				<span id="labelNewCollab" class="label label-default ">Connexion</span>
-        <div class="link">
+        <span ng-show='userCtl.result != undefined' id="labelNewCollab">{{userCtl.result}}</span>
 
+        <div class="zoneAcc">
 
-        <div  class="row">
+        <div class="acc" class="row">
          <div class="col-lg-offset-9 " >
           <button  ng-click='userCtl.changePage("newAccount")' class="btn btn-sm btn-info btn-outline-info">Nouveau compte</button>
          </div>
 
        </div>
 
-       <div  class="row">
+       <div class="acc" class="row">
         <div class="col-lg-offset-9 " >
          <button ng-click='userCtl.changePage("forgottenPasswords")' class="btn btn-sm btn-danger btn-outline-danger">Passwords oublié</button>
         </div>
@@ -93,7 +110,7 @@ float: right;
 
 					<form  accept-charset="UTF-8"   >
 
-						<div class="row" >
+						<div id="zoneConnexion" class="row" >
 							<div class="col-lg-5 col-lg-offset-1 " >
 								<input ng-model='account.email' type="text" name="email" placeholder="Votre email" class="form-control" >
 							</div>

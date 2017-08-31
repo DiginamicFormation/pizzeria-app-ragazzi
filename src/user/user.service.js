@@ -1,15 +1,15 @@
 export default class UserService{
 
-  constructor($http, $log, $sessionStorage, UrlService, $location){
+  constructor($http, $log, $sessionStorage, UrlService, $location, $timeout){
     this.$http = $http;
     this.$log = $log;
     this.$sessionStorage = $sessionStorage;
     this.UrlService = UrlService;
     this.$location = $location;
-
     this.tabUsers = [];
-    this.result = 'unknown';
+    this.result = undefined;
     this.foundUser = false;
+    this.$timeout = $timeout;
   }
 
 //---------------------get All users--------------------
@@ -27,8 +27,12 @@ export default class UserService{
       data: this.account
     }).then((res)=>{
       this.$log.log("==>created account OK ! :) "+ res.statusText);
-    //  this.$sessionStorage.get("userConnected") =
+
      this.$sessionStorage.put("userConnected", JSON.stringify(this.account));
+     this.$timeout(()=>{
+       this.$location.path('/home');
+     }, 1500);
+
        return res;
     },(err)=>{
 
@@ -56,21 +60,26 @@ export default class UserService{
               this.tabUsers.forEach((user)=>{
                 if( (user.email === acc.email) && (user.password === acc.password) ){
 
-                    this.foundUser = true;
                     this.$sessionStorage.put('userConnected',JSON.stringify(user))
-
-                      this.$log.log("==> Infos loggin OK :D!");
-                      this.$log.log("You are connected !");
-                      this.$location.path('/home');
+                    return this.foundUser = true;
                 }
               })
 
               if(!this.foundUser){
-                  this.$log.log("==> Infos loggin failed :( !");
+                  this.$log.log("==> Infos loggin failed :(");
+
+              }else{
+                this.$log.log("==> You are connected :)");
+                this.$timeout(()=>{
+                 this.$location.path('/home');
+               }, 2000);
               }
             },(err)=>{
               this.$log.log("err: " + err.statusText)
+
             })
+
+
   }
 }
 
@@ -95,15 +104,12 @@ export default class UserService{
      }else{
        this.$log.log ('No user connected ! :(');
      }
-
-
    }
-
 
 //----------------------Modify account-----------------------------
   modifyAccount(account){
 
-        return  this.$http.get(this.UrlService.users+'/'+account.id)
+        return  this.$http.get(this.UrlService.users+'/'+ account.id)
           .then((res)=>{
             this.acc = res.data;
             this.acc.email = account.email;
@@ -111,8 +117,9 @@ export default class UserService{
             this.acc.firstname = account.firstname;
             this.acc.lastname = account.lastname;
             this.acc.adress = account.adress;
+            this.$sessionStorage.put('userConnected',JSON.stringify(this.acc))
+          return this.$http({url : this.UrlService.users+'/'+ account.id, method: 'PUT', data: this.acc})
 
-          return this.$http({url : this.UrlService.users+'/'+account.id, method: 'PUT', data: this.acc})
           },(err)=>{
             this.$log.log("err: "+ err.status + err.statusText)
           })
@@ -120,7 +127,7 @@ export default class UserService{
 
 removeUser(){
   this.$sessionStorage.remove("userConnected");
-  this.$location.path("/order");
+  this.$location.path("/home");
   //this.$root.reload();
 }
 

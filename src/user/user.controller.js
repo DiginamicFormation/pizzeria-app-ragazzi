@@ -14,7 +14,6 @@ export default class UserController {
 
 	}
 
-
 	$onInit(){
 		//this.verifyIfUserLogged();
 		this.getUserConnected();
@@ -29,14 +28,6 @@ export default class UserController {
 		this.resetForm();
 		this.result = 'Created OK !';
 
-		this.$timeout(()=>{
-
-			this.$location.path('/home');
-
-			//this.$window.location.reload();
-
-		}, 2000);
-
 
 	}
 
@@ -50,7 +41,7 @@ verifyIfUserLogged(){
 }
 
 connectAccount(account){
-	this.UserService.connectAccount(account);
+	 this.UserService.connectAccount(account)
 
 }
 
@@ -75,6 +66,9 @@ modifyAccount(newAccount){
 	.then((res)=>{
 		if(res.statusText === 'OK'){
 			this.result = 'Updated OK !'
+			this.$timeout(()=>{
+			 this.$location.path('/displayInfos');
+		 }, 2000);
 		}
 	},(err)=>{
 		this.result = err.statusText;
