@@ -35,7 +35,8 @@ export default class UserController {
 
 			//this.$window.location.reload();
 
-		}, 3000);
+		}, 2000);
+
 
 	}
 
