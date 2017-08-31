@@ -1,6 +1,6 @@
 export default class UserController {
 
-	constructor($scope,$http, $log, UserService, $location, $window){
+	constructor($scope,$http, $log, UserService, $location, $window, $timeout){
 		this.$scope = $scope;
 		this.$http = $http;
 		this.$log = $log;
@@ -10,6 +10,8 @@ export default class UserController {
 		this.account = {};
 		this.tabUsers = [];
 		this.$window = $window;
+		this.$timeout = $timeout;
+
 	}
 
 
@@ -27,8 +29,13 @@ export default class UserController {
 		this.resetForm();
 		this.result = 'Created OK !';
 
-		this.$location.path('/home');
+		this.$timeout(()=>{
 
+			this.$location.path('/home');
+
+			//this.$window.location.reload();
+
+		}, 3000);
 
 	}
 
@@ -89,4 +96,4 @@ changePage(link){
 
 }
 
-UserController['$inject'] = ['$scope','$http', '$log', 'UserService','$location', '$window'];
+UserController['$inject'] = ['$scope','$http', '$log', 'UserService','$location', '$window', '$timeout'];
